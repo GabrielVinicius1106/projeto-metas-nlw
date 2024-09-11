@@ -1,7 +1,7 @@
 // Cria uma Importação de Objeto da pasta node_modules, e pega o "campo" SELECT (seleção)
 const  { select, input, checkbox } = require('@inquirer/prompts') // Devolve um objeto
 
- let meta = {
+let meta = {
     value: 'Beber 3L de Água',
     checked: false
 
@@ -52,12 +52,21 @@ const listarMetas = async () => {
 }
 
 const metasRealizadas = async () => {
-    const realizadas = meta.filter((meta) => {
+    const realizadas = metas.filter((meta) => {
         return meta.checked
     })
 
-    console.log(realizadas);
-}
+    if (realizadas.length == 0){
+        console.log("Não existem metas realizadas :(");
+        return
+    }
+
+    await select({
+        message: "Metas Realizadas:",
+        choices: [...realizadas]
+    })
+    //console.log(realizadas)
+} 
 
 const start = async () => {
     
@@ -72,7 +81,6 @@ const start = async () => {
                     name: "Cadastrar Metas",
                     value: "cadastrar"
                 },
-                ,
                 {
                     name: "Listar Metas",
                     value: "listar"

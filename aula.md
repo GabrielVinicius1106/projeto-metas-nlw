@@ -36,6 +36,7 @@ ________________________________________________________________________________
 - [x] Concatenação - '+'
 - [x] Atribuição - '='
 - [x] Comparação - '==' ou '!=' ou '<' ou '>' ou '<=' ou '>='
+- [x] Spread Operator: ... (insere todos os elementos de um array em outro/copia array)
 
 # TIPOS DE DADOS
 
