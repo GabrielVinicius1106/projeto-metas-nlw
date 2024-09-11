@@ -46,6 +46,7 @@ ________________________________________________________________________________
 # ESTRUTURAS DE DADOS   
 
 **Arrays** [x] Lista de contém diferentes dados, de tipos diferentes ou não
+           [x] Métodos de Array: push | HOF: find, forEach, filter (Higher Order Functions)
 
 **Objetos** [x] Uma variável criada com chaves '{}' 
             [x] Possui Atributos e Métodos
