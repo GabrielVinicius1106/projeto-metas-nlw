@@ -1,5 +1,5 @@
 // Cria uma Importação de Objeto da pasta node_modules, e pega o "campo" SELECT (seleção)
-const  { select, input } = require('@inquirer/prompts') // Devolve um objeto
+const  { select, input, checkbox } = require('@inquirer/prompts') // Devolve um objeto
 
  let meta = {
     value: 'Beber 3L de Água',
@@ -23,6 +23,27 @@ const cadastrarMeta = async () => {
     }
     )
 
+}
+
+const listarMetas = async () => {
+    const respostas = await checkbox({
+        message: "Use as setas para mudar de meta, espaço para marcar ou desmarcar e enter para finalizar etapa",
+        choices: [...metas]
+    })
+
+    if (respostas.length == 0){
+        console.log("Nenhuma meta selecionada!");
+        return
+    }
+
+    respostas.forEach((resposta) => {
+        const meta = metas.find((m) => {
+            return m.value == resposta
+        })
+        meta.checked = true
+    })
+
+    console.log("Meta(s) concluída(s)!");
 }
 
 const start = async () => {
@@ -56,7 +77,7 @@ const start = async () => {
                 console.log(metas);
                 break
             case "listar":
-                console.log("Vamos listar!");
+                await listarMetas()
                 break
             case "sair":
                 console.log("Até a Próxima!");
