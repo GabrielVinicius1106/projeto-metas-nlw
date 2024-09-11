@@ -20,20 +20,44 @@
 - Processar os Dados
 - Apresentar os Dados
 
-__________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________________________
 
 # ESCOPO E VARIÁVEIS
 
-- Variáveis são espaços reservados que armazenam alguma coisa, no caso um dado (number, string, boolean)
+- [x] Variáveis são espaços reservados que armazenam alguma coisa, no caso um dado (number, string, boolean)
 
-- let: podem ser alteradas
-- const: não podem ser alteradas
+- [x] let: podem ser alteradas
+- [x] const: não podem ser alteradas
 
-- Variáveis Globais e Locais
+- [x] Variáveis Globais e Locais
 
 # OPERADORES
 
+- [x] Concatenação - '+'
+- [x] Atribuição - '='
+
 # TIPOS DE DADOS
 
-- String (textos): " " ' ' `` Ex: "Gabriel"  
-- Number (números): 2 3.14
+- [x] String (textos): " " ' ' `` Ex: "Gabriel"  
+- [x] Number (números): 2 3.14
+- [x] Boolean: true / false
+
+# ESTRUTURAS DE DADOS   
+
+**Arrays** [x] Lista de contém diferentes dados, de tipos diferentes ou não
+
+**Objetos** [x] Uma variável criada com chaves '{}' 
+            [x] Possui Atributos e Métodos
+            [x] Acesso a Atributos e Métodos
+
+# FUNÇÕES E MÉTODOS
+
+   **FUNÇÕES**
+    [x] arrow function - let funcao = (<parâmetros>) => {<comandos>} 
+    [x] named function - function <nomeFuncao>(<parâmetros>){<comandos>}
+    [x] Criar funções
+    [x] Chamar funções
+
+   **MÉTODOS**
+    [x] Métodos são Funções de Objetos
+
