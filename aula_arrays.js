@@ -1,27 +1,17 @@
-// Arrays e Objetos
-
-// Arrays
-let metas = ["Gabriel", "Vinícius"]
-
-// Objeto
+// Um único objeto
 let meta = {
-    // Atributos
-    value: 'Treinar 3x na Semana',
-    // arrow function '=>'
-    logInfo: (info) => {
-        console.log(info);
-    }, 
+    value: 'Beber Água',
+    checked: true
 }
 
-meta.value = ''
+// Objeto com outros objetos dentro
+let metas = [
+    meta,
+    {
+        value: 'Caminhar 20 minutos todos os Dias',
+        checked: false
+    }
+]
 
-//console.log(meta.isChecked('oi'));
-
-//meta.logInfo("Olá")
-
-// named function 
-function criarMeta(){
-    console.log("Hello World!");
-}
-
-criarMeta()
+// Acessa os atributos dos objetos com base no índice
+console.log(metas[1].value);
