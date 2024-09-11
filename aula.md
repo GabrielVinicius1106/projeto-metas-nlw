@@ -61,3 +61,13 @@ ________________________________________________________________________________
    **MÉTODOS**
     [x] Métodos são Funções de Objetos
 
+
+# ESTRUTURAS DE REPETIÇÃO
+
+- [x] While
+    - Return: Encerra o loop (em funcoes)
+
+# CONDICIONAIS
+
+- [x] Switch
+    - Necessário colocar o break
