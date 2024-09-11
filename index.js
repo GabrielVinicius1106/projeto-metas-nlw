@@ -10,27 +10,26 @@ let meta = {
 let metas = []
 
 const cadastrarMeta = async () => {
-    const meta = await input({ message: "Digite a Meta: " })
+    const meta = await input({message: "\nDigite a Meta: "})
 
     if (meta.length == 0){
-        console.log("A meta não pode ser vazia");
+        console.log("\nA meta não pode ser vazia\n");
         return
     }
 
     metas.push(
         {
         value: meta, checked: false
-    }
+        }
     )
-
 }
 
 const listarMetas = async () => {
     if (metas.length == 0){
-        console.log("Não há metas! \n");
+        console.log("\nNão há metas! \n");
     } else {
         const respostas = await checkbox({
-            message: "Use as setas para mudar de meta, espaço para marcar ou desmarcar e enter para finalizar etapa",
+            message: "\nSetas - Selecionar \nEspaço - Marcar/Desmarcar \nEnter - Confirmar \n\nMetas: \n",
             choices: [...metas],
             instructions: false
         })
@@ -40,7 +39,7 @@ const listarMetas = async () => {
         })
     
         if (respostas.length == 0){
-            console.log("Nenhuma meta selecionada!");
+            console.log("\nNenhuma meta selecionada!\n");
             return
         }
     
@@ -50,9 +49,9 @@ const listarMetas = async () => {
             })
             meta.checked = true 
         }) 
-    }
 
-    console.log("Meta(s) marcada(s) como concluída(s)!");
+        console.log("\nMeta(s) marcada(s) como concluída(s)!\n");
+    }
 }
 
 const metasRealizadas = async () => {
@@ -61,13 +60,14 @@ const metasRealizadas = async () => {
     })
 
     if (realizadas.length == 0){
-        console.log("Não existem metas realizadas :(");
+        console.log("\nNão existem metas realizadas :( \n");
         return
     }
 
     await select({
-        message: "Metas Realizadas:",
-        choices: [...realizadas]
+        message: "\nMetas Realizadas: " + realizadas.length + "\n",
+        choices: [...realizadas],
+        instructions: false
     })
     //console.log(realizadas)
 } 
@@ -78,14 +78,44 @@ const metasAbertas = async () => {
     })
 
     if (abertas.length == 0){
-        console.log("Não há metas abertas! :)");
+        console.log("\nNão há metas abertas! :)\n");
         return
     }
 
     await select({
-        message: "Metas abertas: " + abertas.length,
-        choices: [...abertas]
+        message: "\nMetas abertas: " + abertas.length + "\n",
+        choices: [...abertas],
+        instructions: false
     })
+}
+
+const excluirMetas = async () => {
+    if (metas.length == 0){
+        console.log("\nNão há metas! \n");
+    } else {
+        const metasDesmarcadas = metas.map((meta) => {
+            return { value: meta.value, checked: false }
+        })
+        
+        const itensADeletar = await checkbox({
+            message: "\nSelecione um item para excluir: \n",
+            choices: [...metasDesmarcadas],
+            instructions: false
+        })
+        
+        if (itensADeletar.length == 0){
+            console.log("\nNenhum item para excluir! \n")
+            return
+        }
+
+        itensADeletar.forEach((item) => {
+            metas = metas.filter((meta) => {
+                return meta.value != item
+            })
+        })
+
+        console.log("\nMeta(s) deletada(s) com sucesso!\n");
+    }
 }
 
 const start = async () => {
@@ -95,7 +125,7 @@ const start = async () => {
         // await -> aguardar
         const opcao = await select({
             // Estes atributos já são definidos
-            message: "Menu: \n",
+            message: "\nMenu: \n",
             choices: [
                 {
                     name: "Cadastrar Metas",
@@ -112,6 +142,10 @@ const start = async () => {
                 {
                     name: "Metas Abertas",
                     value: "abertas"
+                },
+                {
+                    name: "Excluir Metas",
+                    value: "excluir"
                 },
                 {
                     name: "Sair",
@@ -135,8 +169,11 @@ const start = async () => {
             case "abertas":
                 await metasAbertas()
                 break
+            case "excluir":
+                await excluirMetas()
+                break
             case "sair":
-                console.log("Até a Próxima!");
+                console.log("\nAté a Próxima!\n");
                 // Encerra o loop
                 return
         }
