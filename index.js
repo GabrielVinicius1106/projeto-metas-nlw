@@ -1,15 +1,25 @@
 // Cria uma Importação de Objeto da pasta node_modules, e pega o "campo" SELECT (seleção)
 const  { select, input, checkbox } = require('@inquirer/prompts') // Devolve um objeto
 
+const fs = require("fs").promises
+
 let mensagem = "Bem Vindo ao App de Metas!"
 
-let meta = {
-    value: '',
-    checked: false 
+let metas
 
+const carregarMetas = async () => {
+    try {
+        const dados = await fs.readFile("metas.json", "utf-8")
+        metas = JSON.parse(dados)
+    }
+    catch (erro) {
+        metas = []
+    }
 }
 
-let metas = []
+const salvarMetas = async () => {
+    await fs.writeFile("metas.json", JSON.stringify(metas, null, 2))
+}
 
 const cadastrarMeta = async () => {
     const meta = await input({message: "\nDigite a Meta: "})
@@ -133,7 +143,11 @@ const mostraMensagem = () => {
 
 const start = async () => {
     
+    await carregarMetas()
+
     while(true){
+        
+        await salvarMetas()
         mostraMensagem()
         // await -> aguardar
         const opcao = await select({

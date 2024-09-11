@@ -5,3 +5,5 @@
 - [x] Marcar/Desmarcar Metas Realizadas
 - [x] Remover Metas
 - [x] Sistema de Mensagens
+- [x] Sistema de Carregar e Salvar Metas
+- [x] Persistir Dados

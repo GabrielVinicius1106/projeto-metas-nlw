@@ -82,7 +82,16 @@ ________________________________________________________________________________
 
 - [x] Importação de Módulos em Node.Js
 - [x] biblioteca Inquirer para criar prompts interativos
+- [x] Módulo FS (file system) (nativo)
 
 # PROGRAMAÇÃO ASSÍNCRONA E PROMISSES
 
 - [x] Uso de funções assíncronas (async/await)
+
+# ARQUIVO JSON
+
+   **O que é?** JSON = Javascript Object Notation
+
+- [x] Uso de arquivo .json
+- [x] JSON.parse: Transforma de .json para .js
+- [x] JSON.stringfy: Transforma de .js para .json
