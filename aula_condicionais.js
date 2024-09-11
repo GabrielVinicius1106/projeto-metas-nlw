@@ -1,5 +1,29 @@
 // Cria uma Importação de Objeto da pasta node_modules, e pega o "campo" SELECT (seleção)
-const  { select } = require('@inquirer/prompts') // Devolve um objeto
+const  { select, input } = require('@inquirer/prompts') // Devolve um objeto
+
+ let meta = {
+    value: 'Beber 3L de Água',
+    checked: false
+
+}
+
+let metas = [ meta ]
+
+const cadastrarMeta = async () => {
+    const meta = await input({ message: "Digite a Meta: " })
+
+    if (meta.length == 0){
+        console.log("A meta não pode ser vazia");
+        return
+    }
+
+    metas.push(
+        {
+        value: meta, checked: false
+    }
+    )
+
+}
 
 const start = async () => {
     
@@ -28,7 +52,8 @@ const start = async () => {
 
         switch(opcao){
             case "cadastrar":
-                console.log("Vamos cadastrar!");
+                await cadastrarMeta()
+                console.log(metas);
                 break
             case "listar":
                 console.log("Vamos listar!");
