@@ -71,3 +71,12 @@ ________________________________________________________________________________
 
 - [x] Switch
     - Necessário colocar o break
+
+# MÓDULOS EM NODE.JS
+
+- [x] Importação de Módulos em Node.Js
+- [x] biblioteca Inquirer para criar prompts interativos
+
+# PROGRAMAÇÃO ASSÍNCRONA E PROMISSES
+
+- [x] Uso de funções assíncronas (async/await)
