@@ -1,13 +1,13 @@
 // Cria uma Importação de Objeto da pasta node_modules, e pega o "campo" SELECT (seleção)
 const  { select, input, checkbox } = require('@inquirer/prompts') // Devolve um objeto
 
-const fs = require("fs").promises
+const fs = require("fs").promises // Cria o objeto para salvar e pegar as metas do arquivo .json
 
-let mensagem = "Bem Vindo ao App de Metas!"
+let mensagem = "Bem Vindo ao App de Metas!" // Mensagem de boas vindas
 
 let metas
 
-const carregarMetas = async () => {
+const carregarMetas = async () => { // Função para carregar as metas do arquivo .json para o arquivo index.js
     try {
         const dados = await fs.readFile("metas.json", "utf-8")
         metas = JSON.parse(dados)
@@ -17,11 +17,11 @@ const carregarMetas = async () => {
     }
 }
 
-const salvarMetas = async () => {
+const salvarMetas = async () => { // Função para salvar as metas no arquivo .json
     await fs.writeFile("metas.json", JSON.stringify(metas, null, 2))
 }
 
-const cadastrarMeta = async () => {
+const cadastrarMeta = async () => { // Função para cadastrar as metas
     const meta = await input({message: "\nDigite a Meta: "})
 
     if (meta.length == 0){
@@ -38,7 +38,7 @@ const cadastrarMeta = async () => {
     mensagem = "Meta cadastrada com sucesso!"
 }
 
-const listarMetas = async () => {
+const listarMetas = async () => { // Função para listar as metas no programa
     if (metas.length == 0){
         mensagem = "\nNão há metas! \n"
     } else {
@@ -68,7 +68,7 @@ const listarMetas = async () => {
     }
 }
 
-const metasRealizadas = async () => {
+const metasRealizadas = async () => { // Função para listar metas realizadas
     const realizadas = metas.filter((meta) => {
         return meta.checked
     })
@@ -85,7 +85,7 @@ const metasRealizadas = async () => {
     })
 } 
  
-const metasAbertas = async () => {
+const metasAbertas = async () => { // Função para listar metas abertas
     const abertas = metas.filter((meta) => {
         return meta.checked != true
     })
@@ -102,7 +102,7 @@ const metasAbertas = async () => {
     })
 }
 
-const excluirMetas = async () => {
+const excluirMetas = async () => { // Função para excluir as metas
     if (metas.length == 0){
         mensagem = "\nNão há metas! \n"
     } else {
@@ -131,7 +131,7 @@ const excluirMetas = async () => {
     }
 }
 
-const mostraMensagem = () => {
+const mostraMensagem = () => { // Função para mostrar as mensagens em cada tela
     
     console.clear()
 
@@ -141,7 +141,7 @@ const mostraMensagem = () => {
     }
 }
 
-const start = async () => {
+const start = async () => { // Função 'main' para rodar o programa
     
     await carregarMetas()
 
