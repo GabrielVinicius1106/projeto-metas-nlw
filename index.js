@@ -1,4 +1,4 @@
-// Cria uma Importação de Objeto da pasta node_modules, e pega o "campo" SELECT (seleção)
+// Cria uma Importação de Objeto da pasta node_modules, e pega o "campo" SELECT (seleção), INPUT e CHECKBOX
 const  { select, input, checkbox } = require('@inquirer/prompts') // Devolve um objeto
 
 const fs = require("fs").promises // Cria o objeto para salvar e pegar as metas do arquivo .json
